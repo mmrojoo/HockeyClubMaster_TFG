@@ -1,0 +1,17 @@
+<!-- res/layout/dialog_eliminar_empleado_material.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textMensajeEliminar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="¿Estás seguro de que deseas eliminar a este empleado?"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"/>
+
+</LinearLayout>

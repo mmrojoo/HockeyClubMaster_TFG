@@ -1,0 +1,103 @@
+<!-- res/layout/dialog_show_empleado.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Imagen del empleado -->
+    <ImageView
+        android:id="@+id/imageViewDialogEmpleado"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Nombre del empleado -->
+    <TextView
+        android:id="@+id/textNombreDialogEmpleado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="35sp"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Tabla para mostrar datos -->
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/darker_gray"
+        android:padding="8dp">
+
+        <!-- Fila para la edad -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/background_light">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edad:"
+                android:padding="8dp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/textViewId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"/>
+        </TableRow>
+
+        <!-- Fila para el sueldo -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/background_light">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sueldo:"
+                android:padding="8dp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/textViewNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"/>
+        </TableRow>
+
+        <!-- Fila para el puesto -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/background_light">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Puesto:"
+                android:padding="8dp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/textViewApellido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"/>
+        </TableRow>
+    </TableLayout>
+
+    <!-- Botón para cerrar el diálogo -->
+    <Button
+        android:id="@+id/btnCerrarDialogEmpleado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cerrar"
+        android:background="?android:attr/selectableItemBackground"/>
+</LinearLayout>
