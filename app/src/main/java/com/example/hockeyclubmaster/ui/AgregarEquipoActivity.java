@@ -7,11 +7,17 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hockeyclubmaster.Adapter.EquiposAdapter;
 import com.example.hockeyclubmaster.R;
+import com.example.hockeyclubmaster.model.Equipo;
 import com.google.firebase.firestore.FirebaseFirestore;
-import java.util.HashMap;
-import java.util.Map;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AgregarEquipoActivity extends AppCompatActivity {
 
@@ -19,6 +25,9 @@ public class AgregarEquipoActivity extends AppCompatActivity {
     private EditText editTextCoachUID;
     private Button buttonAddTeam;
     private FirebaseFirestore db;
+    private RecyclerView recyclerViewTeams;
+    private EquiposAdapter equiposAdapter;
+    private List<Equipo> equiposList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +37,16 @@ public class AgregarEquipoActivity extends AppCompatActivity {
         editTextTeamName = findViewById(R.id.editTextTeamName);
         editTextCoachUID = findViewById(R.id.editTextTeamName2);
         buttonAddTeam = findViewById(R.id.buttonAddTeam);
+        recyclerViewTeams = findViewById(R.id.recyclerViewTeams);
 
         // Inicializar Firestore
         db = FirebaseFirestore.getInstance();
+
+        // Inicializar RecyclerView y su adaptador
+        equiposList = new ArrayList<>();
+        equiposAdapter = new EquiposAdapter(this, equiposList);
+        recyclerViewTeams.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewTeams.setAdapter(equiposAdapter);
 
         buttonAddTeam.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +54,9 @@ public class AgregarEquipoActivity extends AppCompatActivity {
                 agregarEquipo();
             }
         });
+
+        // Mostrar los equipos al inicio
+        mostrarEquipos();
     }
 
     private void agregarEquipo() {
@@ -49,10 +68,8 @@ public class AgregarEquipoActivity extends AppCompatActivity {
             return;
         }
 
-        // Crear un nuevo mapa para almacenar los datos del equipo
-        Map<String, Object> equipo = new HashMap<>();
-        equipo.put("categoria", categoria);
-        equipo.put("UID_entrenador", UID_entrenador);
+        // Crear un nuevo objeto Equipo
+        Equipo equipo = new Equipo(categoria, UID_entrenador);
 
         // Agregar el equipo a Firestore con el nombre del documento como la categoría
         db.collection("equipos")
@@ -62,10 +79,27 @@ public class AgregarEquipoActivity extends AppCompatActivity {
                     Toast.makeText(this, "Equipo agregado correctamente", Toast.LENGTH_SHORT).show();
                     editTextTeamName.setText("");
                     editTextCoachUID.setText("");
+                    // Mostrar los equipos después de agregar uno nuevo
+                    mostrarEquipos();
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(this, "Error al agregar equipo: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
 
+    private void mostrarEquipos() {
+        db.collection("equipos")
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    equiposList.clear();
+                    for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                        Equipo equipo = documentSnapshot.toObject(Equipo.class);
+                        equiposList.add(equipo);
+                    }
+                    equiposAdapter.notifyDataSetChanged();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Error al obtener equipos: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+    }
 }
