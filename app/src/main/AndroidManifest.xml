@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,16 +14,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HockeyClubMaster"
         tools:targetApi="31">
-
+        <activity
+            android:name=".ui.EditProfileActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-6003854956409608~3913688022" />
 
-
         <activity
             android:name=".ui.LoginActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.EditProfileActivity"
+            android:exported="false"
+            tools:ignore="DuplicateActivity" />
+
         <activity
             android:name=".ui.AgregarEquipoActivity"
             android:exported="false" />
