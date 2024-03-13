@@ -1,6 +1,7 @@
 package com.example.hockeyclubmaster.ui;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapterTrendsList;
     private RecyclerView recyclerViewTrends;
     private LinearLayout profileBtn;
+    private LinearLayout equipoLinearLayout;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -33,6 +36,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+        equipoLinearLayout = findViewById(R.id.equipoLinearLayout);
+        equipoLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AgregarEquipoActivity.class);
                 startActivity(intent);
             }
         });
