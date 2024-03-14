@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">HockeyClubMaster</string>
+    <string name="app_name">Mi Aplicación de Equipos de Hockey</string>
+    <string name="nombre_equipo">Nombre del Equipo</string>
+    <string name="id_entrenador">UID del Entrenador</string>
+    <string name="add_team">Agregar Equipo</string>
+    <string name="eliminar_team">Eliminar Equipo</string>
 </resources>
