@@ -40,8 +40,8 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
 
         mAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("User");
-        storageProfilePicsRef = FirebaseStorage.getInstance().getReference().child("Profile Pic");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("usuarios");
+        storageProfilePicsRef = FirebaseStorage.getInstance().getReference().child("image");
 
         profileImageView = findViewById(R.id.profile_image);
         closeButton = findViewById(R.id.btnClose);
