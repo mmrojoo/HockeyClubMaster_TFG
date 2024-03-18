@@ -75,7 +75,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/textNombreUsuario"
                 android:layout_width="match_parent"
                 android:textStyle="bold"
                 android:layout_marginTop="8dp"
@@ -86,7 +86,7 @@
                 android:textSize="26sp"/>
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/textCorreo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"

@@ -6,14 +6,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
 
 import com.example.hockeyclubmaster.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,6 +24,8 @@ public class ProfileActivity extends AppCompatActivity {
     private ConstraintLayout logOut;
     private ConstraintLayout editProfile;
     private ConstraintLayout backHome;
+    private TextView textNombreUsuario;
+    private TextView textCorreo;
 
 
     private ImageView fotoPerfil;
@@ -39,7 +40,10 @@ public class ProfileActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
 
+
         fotoPerfil = findViewById(R.id.fotoPerfil);
+        textNombreUsuario = findViewById(R.id.textNombreUsuario);
+        textCorreo = findViewById(R.id.textCorreo);
         editProfile = findViewById(R.id.editProfile);
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
